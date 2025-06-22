@@ -40,7 +40,10 @@ const AppointmentsView = () => {
   });
 
   const test = () => {
-    selectedAppointment;
+    if (selectedAppointment) {
+      // Par exemple : log ou autre traitement
+      console.log("Appointment selected:", selectedAppointment);
+    }
     setSelectedAppointment(null);
     setAppointments(appointments);
   };
