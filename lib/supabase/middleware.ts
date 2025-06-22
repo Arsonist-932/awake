@@ -22,17 +22,17 @@ export async function updateSession(request: NextRequest) {
         },
         setAll(cookiesToSet) {
           cookiesToSet.forEach(({ name, value }) =>
-            request.cookies.set(name, value),
+            request.cookies.set(name, value)
           );
           supabaseResponse = NextResponse.next({
             request,
           });
           cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options),
+            supabaseResponse.cookies.set(name, value, options)
           );
         },
       },
-    },
+    }
   );
 
   // Do not run code between createServerClient and
@@ -53,16 +53,45 @@ export async function updateSession(request: NextRequest) {
 
   const currentPath = request.nextUrl.pathname;
 
-  // Si l'utilisateur n'est pas connecté ET qu'il essaie d'accéder à une route protégée
+  // Vérifier si la route actuelle est publique
+  const isPublicRoute = publicRoutes.some(
+    (route) => currentPath === route || currentPath.startsWith(route + "/")
+  );
+
+  // Vérifier si la route actuelle est protégée
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    currentPath.startsWith(route)
+  );
+
+  // Si l'utilisateur n'est pas connecté
+  if (!user) {
+    // Si il essaie d'accéder à une route protégée, rediriger vers login
+    if (
+      isProtectedRoute &&
+      !currentPath.startsWith("/login") &&
+      !currentPath.startsWith("/auth")
+    ) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/auth/login";
+      return NextResponse.redirect(url);
+    }
+    // Si c'est une route publique ou auth, laisser passer
+    if (
+      isPublicRoute ||
+      currentPath.startsWith("/auth") ||
+      currentPath.startsWith("/login")
+    ) {
+      return supabaseResponse;
+    }
+  }
+
+  // Si l'utilisateur est connecté et essaie d'accéder aux pages auth/login, rediriger
   if (
-    !user &&
-    !currentPath.startsWith("/login") &&
-    !currentPath.startsWith("/auth") &&
-    protectedRoutes.some((route) => currentPath.startsWith(route))
+    user &&
+    (currentPath.startsWith("/auth") || currentPath.startsWith("/login"))
   ) {
-    // Rediriger vers la page de connexion
     const url = request.nextUrl.clone();
-    url.pathname = "/auth/login";
+    url.pathname = "/dashboard"; // ou votre page d'accueil pour les utilisateurs connectés
     return NextResponse.redirect(url);
   }
 

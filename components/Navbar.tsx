@@ -2,7 +2,7 @@ import Link from "next/link";
 import { AuthButton } from "@/components/auth-button";
 import NavbarMobile from "./NavMobile";
 
-type NavLink = {
+export type NavLink = {
   href: string;
   label: string;
 };

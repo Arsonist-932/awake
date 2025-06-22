@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Settings, UserCircle, LogOut, Bell, HelpCircle } from "lucide-react";
+import { Settings, UserCircle, Bell, HelpCircle } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,

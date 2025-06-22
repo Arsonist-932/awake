@@ -97,12 +97,12 @@ export function LoginForm({
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              Vous n'avez pas de compte ?{" "}
+              Vous n&apos;avez pas de compte ?{" "}
               <Link
                 href="/auth/sign-up"
                 className="underline underline-offset-4"
               >
-                S'inscrire
+                S&apos;inscrire
               </Link>
             </div>
           </form>

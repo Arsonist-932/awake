@@ -3,8 +3,12 @@ import { AlignLeft, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
+import { NavLink } from "./Navbar";
 
-const NavbarMobile = ({ navlinks }: { navlinks: any[] }) => {
+interface NavLinksProps {
+  navlinks: NavLink[];
+}
+const NavbarMobile = ({ navlinks }: NavLinksProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLinkClick = () => {
