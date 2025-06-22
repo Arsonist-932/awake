@@ -137,7 +137,7 @@ const HypnotherapyDashboard: React.FC = () => {
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-600">
-                Rendez-vous aujourd'hui
+                Rendez-vous aujourd&apos;hui
               </p>
               <p className="text-2xl font-semibold text-gray-900">
                 {

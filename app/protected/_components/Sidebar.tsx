@@ -12,10 +12,6 @@ import {
 } from "lucide-react";
 import { JSX, useState } from "react";
 
-type SidebarProps = {
-  render: () => JSX.Element | null;
-};
-
 const Sidebar = ({ render }: { render: () => JSX.Element | null }) => {
   const navItems = [
     { id: "dashboard", label: "Tableau de bord", icon: Home },

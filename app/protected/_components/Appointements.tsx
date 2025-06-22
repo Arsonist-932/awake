@@ -42,6 +42,7 @@ const AppointmentsView = () => {
   const test = () => {
     selectedAppointment;
     setSelectedAppointment(null);
+    setAppointments(appointments);
   };
 
   console.log(test);

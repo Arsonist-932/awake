@@ -94,7 +94,7 @@ const PodcastForm = ({
                     <label className="relative cursor-pointer rounded-md">
                       <Upload className="mx-auto h-12 w-12" />
                       <span>Télécharger une image ou glisser-déposer</span>
-                      <p className="text-xs">PNG, JPG jusqu'à 5MB</p>
+                      <p className="text-xs">PNG, JPG jusqu&apos;à 5MB</p>
 
                       <Input
                         id="image"
