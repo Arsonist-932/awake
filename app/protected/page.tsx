@@ -19,6 +19,8 @@ import AppointmentsView from "./_components/Appointements";
 import AnalyticsView, { sampleAnalytics } from "./_components/AnalyticsView";
 import PodcastsView from "./_components/PodcastsView";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import Badge from "./_components/Badge";
+import { Button } from "@/components/ui/button";
 
 // Components
 const Card = ({
@@ -34,73 +36,6 @@ const Card = ({
     {children}
   </div>
 );
-
-const Button = ({
-  children,
-  onClick,
-  variant = "primary",
-  size = "md",
-  className = "",
-  disabled = false,
-}: {
-  children: React.ReactNode;
-  onClick?: () => void;
-  variant?: "primary" | "secondary" | "danger" | "ghost";
-  size?: "sm" | "md" | "lg";
-  className?: string;
-  disabled?: boolean;
-}) => {
-  const baseClasses =
-    "inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
-
-  const variants = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
-    secondary:
-      "bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500",
-    danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
-    ghost:
-      "text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:ring-gray-500",
-  };
-
-  const sizes = {
-    sm: "px-3 py-1.5 text-sm",
-    md: "px-4 py-2 text-sm",
-    lg: "px-6 py-3 text-base",
-  };
-
-  return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
-    >
-      {children}
-    </button>
-  );
-};
-
-export const Badge = ({
-  children,
-  variant = "default",
-}: {
-  children: React.ReactNode;
-  variant?: "default" | "success" | "warning" | "danger";
-}) => {
-  const variants = {
-    default: "bg-gray-100 text-gray-800",
-    success: "bg-green-100 text-green-800",
-    warning: "bg-yellow-100 text-yellow-800",
-    danger: "bg-red-100 text-red-800",
-  };
-
-  return (
-    <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${variants[variant]}`}
-    >
-      {children}
-    </span>
-  );
-};
 
 // Dashboard Component
 const HypnotherapyDashboard: React.FC = () => {

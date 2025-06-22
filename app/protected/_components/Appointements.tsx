@@ -14,10 +14,11 @@ import {
 import { useState } from "react";
 import { sampleAppointments } from "@/data/data";
 import { Appointment } from "@/data/types";
-import { Badge } from "../page";
+
 import { formatDate, formatTime } from "@/hooks/Date";
 import { Input } from "@/components/ui/input";
 import NewAppointmentForm from "./Form/NewAppointmentForm";
+import Badge from "./Badge";
 
 const AppointmentsView = () => {
   const [filterStatus, setFilterStatus] = useState<string>("all");
