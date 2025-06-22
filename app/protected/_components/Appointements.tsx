@@ -14,7 +14,6 @@ import {
 import { useState } from "react";
 import { sampleAppointments } from "@/data/data";
 import { Appointment } from "@/data/types";
-
 import { formatDate, formatTime } from "@/hooks/Date";
 import { Input } from "@/components/ui/input";
 import NewAppointmentForm from "./Form/NewAppointmentForm";

@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { formatDate, formatTime } from "@/hooks/Date";
-import { Badge } from "../../page";
 import { XCircle } from "lucide-react";
 import { Appointment } from "@/data/types";
+import Badge from "../Badge";
 
 interface AppointmentModalProps {
   selectedAppointment: Appointment | null;
