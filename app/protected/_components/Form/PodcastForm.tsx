@@ -11,8 +11,6 @@ const PodcastForm = ({
   isActive: boolean;
   onClose: () => void;
 }) => {
-  if (!isActive) return null;
-
   const [PodcastFormData, setPodcastFormData] = useState({
     title: "",
     description: "",
@@ -20,6 +18,8 @@ const PodcastForm = ({
     audio: "",
     categories: "",
   });
+
+  if (!isActive) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ const PodcastForm = ({
         <div className="flex max-h-[90vh] w-full max-w-2xl flex-col gap-5 overflow-y-auto rounded-xl bg-white p-6 dark:bg-black">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-lg font-semibold">
-              Ajout d'un nouveau podcast
+              Ajout d&apos;un nouveau podcast
             </h3>
 
             <Button
@@ -124,7 +124,9 @@ const PodcastForm = ({
                     <label className="relative cursor-pointer rounded-md">
                       <Mic className="mx-auto h-12 w-12" />
                       <span>Télécharger un fichier audio</span>{" "}
-                      <p className="text-xs">MP3, WAV, M4A jusqu'à 100MB</p>
+                      <p className="text-xs">
+                        MP3, WAV, M4A jusqu&apos;à 100MB
+                      </p>
                       <Input
                         id="audio"
                         type="file"

@@ -41,7 +41,10 @@ const AppointmentsView = () => {
 
   const test = () => {
     selectedAppointment;
+    setSelectedAppointment(null);
   };
+
+  console.log(test);
 
   return (
     <div className="space-y-6">

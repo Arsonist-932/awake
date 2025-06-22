@@ -119,6 +119,13 @@ const HypnotherapyDashboard: React.FC = () => {
     { id: "services", label: "Services", icon: Briefcase },
   ];
 
+  const testt = () => {
+    setClients(clients);
+    setPodcasts(podcasts);
+  };
+
+  console.log(testt);
+
   // Dashboard Overview Component
   const DashboardOverview = () => (
     <div className="space-y-6">

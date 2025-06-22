@@ -2,14 +2,17 @@ import { Button } from "@/components/ui/button";
 import { formatDate, formatTime } from "@/hooks/Date";
 import { Badge } from "../../page";
 import { XCircle } from "lucide-react";
+import { Appointment } from "@/data/types";
+
+interface AppointmentModalProps {
+  selectedAppointment: Appointment | null;
+  setSelectedAppointment: (appointment: Appointment | null) => void;
+}
 
 const AppointmentModal = ({
   selectedAppointment,
   setSelectedAppointment,
-}: {
-  selectedAppointment: any;
-  setSelectedAppointment: any;
-}) => {
+}: AppointmentModalProps) => {
   if (!selectedAppointment) return null;
 
   return (
