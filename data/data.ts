@@ -281,11 +281,11 @@ export const testimonials = [
     hourCreated: "13:00",
   },
   {
-    name: "",
+    name: "Célia P",
     rating: 5,
     comment: "Elle est juste extraordinaire !",
-    dateCreated: "",
-    hourCreated: "",
+    dateCreated: "17/11/2024",
+    hourCreated: "13:42",
   },
   {
     name: "Célia P.",

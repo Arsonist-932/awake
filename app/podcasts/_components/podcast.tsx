@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import SidebarPodcast from "@/app/podcasts/_components/sidebar-Podcast";
 
-type Podcast = {
+export type Podcast = {
   id: string;
   title: string;
   description: string;

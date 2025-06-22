@@ -8,13 +8,14 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Podcast } from "./podcast";
 
 const SidebarPodcast = ({
   podcastList,
   Onclick,
   isPlaying,
 }: {
-  podcastList: any;
+  podcastList: Podcast | null;
   Onclick: () => void;
   isPlaying: boolean;
 }) => {
