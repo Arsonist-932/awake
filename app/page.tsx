@@ -36,7 +36,7 @@ export default function Home() {
                     Ericksonienne formée à l&apos;IFHE (Institut Français
                     d&apos;Hypnose Humaniste & Ericksonienne). Depuis 2016, ma
                     pratique s&apos;enrichit des approches en PNL et nouvelle
-                    Hypnose, me permettant d'accompagner efficacement mes
+                    Hypnose, me permettant d&apos;accompagner efficacement mes
                     clients vers leurs objectifs.
                   </p>
 

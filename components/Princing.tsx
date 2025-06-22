@@ -9,7 +9,7 @@ interface PricingProps {
   button: string;
 }
 
-const Princing = ({ Array }: { Array: any }) => {
+const Princing = ({ Array }: { Array: PricingProps[] }) => {
   return (
     <>
       {Array.map((service: PricingProps, index: number) => (
@@ -31,7 +31,7 @@ const Princing = ({ Array }: { Array: any }) => {
           )}
 
           <ul className="flex flex-col gap-2 text-xs">
-            {service.Features.map((feature: any, idx: number) => (
+            {service.Features.map((feature: string, idx: number) => (
               <li key={idx} className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-destructive"></span>
                 {feature}
