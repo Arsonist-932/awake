@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { sampleServices } from "@/data/data";
 import { Edit, Plus, Trash2 } from "lucide-react";
-import { Badge } from "../page";
 import { useState } from "react";
 import { formatTime } from "@/hooks/Date";
 import ServiceForm from "./Form/NewServiceForm";
+import Badge from "./Badge";
 
 const ServicesView = () => {
   const [showNewServiceForm, setShowNewServiceForm] = useState(false);
