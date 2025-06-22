@@ -8,7 +8,7 @@ const StarRating = ({ rating }: { rating: number }) => {
           key={index}
           className={`w-5 h-5 transition-all duration-300 ${
             index < rating
-              ? "fill-red-400 text-yellow-400 drop-shadow-sm"
+              ? "fill-red-600 text-red-900 drop-shadow-sm"
               : "text-gray-300"
           }`}
         />
