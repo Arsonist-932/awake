@@ -47,7 +47,7 @@ const NavbarMobile = ({ navlinks }: NavLinksProps) => {
           onClick={handleLinkClick}
         >
           <Button
-            variant={"outline"}
+            variant={"primary"}
             size={"icon"}
             onClick={handleToggleMenu}
             className="absolute left-4 top-2 bg-red-700 hover:bg-red-800"
