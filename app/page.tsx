@@ -182,7 +182,7 @@ export default function Home() {
 
             <section id="testimonials" className="pt-16">
               <div className="container mx-auto px-6">
-                <h2 className="text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent mb-6 leading-tight text-center">
+                <h2 className="text-6xl font-bold bg-gradient-to-r from-red-900 via-white-500 to-white/80 bg-clip-text text-transparent mb-6 leading-tight text-center">
                   Ils nous font confiance
                 </h2>
 
