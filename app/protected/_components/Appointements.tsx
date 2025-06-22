@@ -45,8 +45,6 @@ const AppointmentsView = () => {
     setAppointments(appointments);
   };
 
-  console.log(test);
-
   return (
     <div className="space-y-6">
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
@@ -180,6 +178,9 @@ const AppointmentsView = () => {
           </table>
         </div>
       </Card>
+      <button className="hidden" onClick={test}>
+        fr
+      </button>
 
       {showNewAppointmentForm && (
         <NewAppointmentForm
