@@ -7,6 +7,7 @@ import { useMemo, useState } from "react";
 import PodcastForm from "./Form/PodcastForm";
 import { Badge } from "@/components/ui/badge";
 import SearchTerm from "@/components/Search";
+import Image from "next/image";
 
 const PodcastsView = () => {
   const [showNewPodcastForm, setShowNewPodcastForm] = useState(false);
@@ -61,6 +62,12 @@ const PodcastsView = () => {
           {filteredPodcasts.map((podcast) => (
             <Card key={podcast.id} className="relative p-6">
               <div className="mb-4 flex aspect-square items-center justify-center rounded-lg">
+                <Image
+                  src={podcast.coverImage}
+                  alt="image"
+                  width={500}
+                  height={500}
+                />
                 <Mic className="h-12 w-12" />
               </div>
 
