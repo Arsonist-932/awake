@@ -124,7 +124,7 @@ export const sampleAppointments: Appointment[] = [
     id: "1",
     clientName: "Marie Dubois",
     clientId: "1",
-    date: "25-06-20",
+    date: "2025-06-20",
     time: "10:00",
     duration: 60,
     type: "Hypnothérapie",
@@ -135,7 +135,7 @@ export const sampleAppointments: Appointment[] = [
     id: "2",
     clientName: "Pierre Martin",
     clientId: "2",
-    date: "25-06-20",
+    date: "2025-06-20",
     time: "14:30",
     duration: 90,
     type: "Coaching",
@@ -146,7 +146,7 @@ export const sampleAppointments: Appointment[] = [
     id: "3",
     clientName: "Sophie Leclerc",
     clientId: "3",
-    date: "25-06-21",
+    date: "2025-06-21",
     time: "09:00",
     duration: 60,
     type: "Hypnothérapie",
@@ -160,9 +160,9 @@ export const sampleClients: Client[] = [
     name: "Marie Dubois",
     email: "marie.dubois@email.com",
     phone: "06 12 34 56 78",
-    dateCreated: "25-05-15",
+    dateCreated: "2025-05-15",
     totalSessions: 3,
-    lastSession: "25-06-13",
+    lastSession: "2025-06-13",
     notes: "Patiente très motivée, progrès remarquables",
   },
   {
@@ -170,18 +170,18 @@ export const sampleClients: Client[] = [
     name: "Pierre Martin",
     email: "pierre.martin@email.com",
     phone: "06 98 76 54 32",
-    dateCreated: "25-04-20",
+    dateCreated: "2025-04-20",
     totalSessions: 8,
-    lastSession: "25-06-18",
+    lastSession: "2025-06-18",
   },
   {
     id: "3",
     name: "Sophie Leclerc",
     email: "sophie.leclerc@email.com",
     phone: "06 11 22 33 44",
-    dateCreated: "25-06-01",
+    dateCreated: "2025-06-01",
     totalSessions: 1,
-    lastSession: "25-06-10",
+    lastSession: "2025-06-10",
   },
 ];
 
@@ -194,7 +194,7 @@ export const samplePodcasts: Podcast[] = [
     audioFile: "podcast1.mp3",
     category: "Éducation",
     duration: 1860,
-    uploadDate: "25-06-15",
+    uploadDate: "2025-06-15",
     downloads: 245,
   },
   {
@@ -205,7 +205,7 @@ export const samplePodcasts: Podcast[] = [
     audioFile: "podcast2.mp3",
     category: "Pratique",
     duration: 2280,
-    uploadDate: "25-06-10",
+    uploadDate: "2025-06-10",
     downloads: 189,
   },
 ];
@@ -221,8 +221,8 @@ export const sampleServices: Service[] = [
     category: "Hypnothérapie",
     active: true,
     priceHistory: [
-      { price: 75, date: "25-01-01" },
-      { price: 80, date: "25-05-01" },
+      { price: 75, date: "2025-01-01" },
+      { price: 80, date: "2025-05-01" },
     ],
   },
   {
@@ -232,10 +232,10 @@ export const sampleServices: Service[] = [
     price: 90,
     duration: 90,
     category: "Coaching",
-    active: true,
+    active: false,
     priceHistory: [
-      { price: 85, date: "25-01-01" },
-      { price: 90, date: "25-04-01" },
+      { price: 85, date: "2025-01-01" },
+      { price: 90, date: "2025-04-01" },
     ],
   },
 ];
@@ -247,14 +247,14 @@ export const testimonials = [
     rating: 5,
     comment:
       "Une personne exceptionnelle, authentique et alerte. Une thérapeute alignée, clairvoyante et dotée de dons multiples. Merci d’avoir mis de la lumière là je percevais de l’ombre, merci pour l’énergie transmise, merci pour ce moment de connexion.",
-    dateCreated: "16/04/25",
+    dateCreated: "16/04/2025",
     hourCreated: "13:24",
   },
   {
     name: "Annick J.",
     rating: 5,
     comment: "juste merci",
-    dateCreated: "09/04/25",
+    dateCreated: "09/04/2025",
     hourCreated: " 16:28",
   },
   {
@@ -262,7 +262,7 @@ export const testimonials = [
     rating: 5,
     comment:
       "Bienveillante empathique je recommande aide à se recentrer sur soi.",
-    dateCreated: "26/03/25",
+    dateCreated: "26/03/2025",
     hourCreated: "12:44",
   },
   {
@@ -270,14 +270,14 @@ export const testimonials = [
     rating: 5,
     comment:
       "Disponible et à l’écoute . Bienveillante et professionnelle. Une rencontre éclairée qui mérite d’être renouvelée . Je recommande",
-    dateCreated: "26/02/25",
+    dateCreated: "26/02/2025",
     hourCreated: "13:28",
   },
   {
     name: "Sylviane C",
     rating: 5,
     comment: "Bienveillante et puissante",
-    dateCreated: "27/12/24",
+    dateCreated: "27/12/2024",
     hourCreated: "13:00",
   },
   {
@@ -291,14 +291,14 @@ export const testimonials = [
     name: "Célia P.",
     rating: 5,
     comment: "",
-    dateCreated: " 17/11/24",
+    dateCreated: " 17/11/2024",
     hourCreated: "13:42",
   },
   {
     name: "Sandra S",
     rating: 5,
     comment: "Wahou",
-    dateCreated: "29/10/24",
+    dateCreated: "29/10/2024",
     hourCreated: "12:56",
   },
   {
@@ -306,14 +306,14 @@ export const testimonials = [
     rating: 5,
     comment:
       "Valeycia est une thérapeute extraordinaire! Cela fait 3 ans qu'elle est mon thérapeute et grace à son accompagnement j'ai surmonté des traumatismes, laissez ma colère, me resociabilise et ai pu établir une relation saine avec mon fils. Je le recommande grandement",
-    dateCreated: "03/09/24",
+    dateCreated: "03/09/2024",
     hourCreated: "12:48",
   },
   {
     name: "Kéri B",
     rating: 5,
     comment: "",
-    date: "07/08/24",
+    dateCreated: "07/08/2024",
     hourCreated: "03:24",
   },
   {
@@ -321,7 +321,7 @@ export const testimonials = [
     rating: 5,
     comment:
       "Je recommande +++. Valeycia est extraordinaire. Merci pour tout ❤️",
-    dateCreated: "24/07/24",
+    dateCreated: "24/07/2024",
     hourCreated: "13:20",
   },
   {
@@ -329,7 +329,7 @@ export const testimonials = [
     rating: 5,
     comment:
       "Valeycia est une personne et une thérapeute extraordinaire ! Son accompagnement est très précieux ! Je recommande +++. Encore mille mercis Valeycia ✨",
-    dateCreated: "23/05/24",
+    dateCreated: "23/05/2024",
     hourCreated: "13:03",
   },
   {
@@ -337,7 +337,7 @@ export const testimonials = [
     rating: 5,
     comment:
       "Merci Valeycia pour ton écoute et ta disponibilité. Je t’ai rencontré au bon moment. Tu as trouvé les mots pour m’aider et me réconforter dans ces moments difficiles de ma vie.",
-    dateCreated: "15/03/24",
+    dateCreated: "15/03/2024",
     hourCreated: "17:25",
   },
   {
@@ -345,7 +345,7 @@ export const testimonials = [
     rating: 5,
     comment:
       "Il est important dans le processus de Guérison, d'avoir le Thérapeute à l'écoute de notre personne, afin de continuer ce travail important avec soi-même, parfois nos parcours sont de vraies montagnes russes, puis nous rencontrerons le Thérapeute qui est à notre et nous accompagne de manière juste...... Tout es juste avec Valeycia. La bonne rencontre, au bon moment, puis à notre tour, nous pouvons accompagner d'autres Âmes en souffrance. Madame Fortuné m'a permis de me reconnecter à moi-même, en me permettant de sortir de mes traumatismes et peurs...... Aujourd'hui j'avance en confiance, au fur et à mesure de mon parcours en Amour et en paix",
-    dateCreated: "12/03/24",
+    dateCreated: "12/03/2024",
     hourCreated: "12:40",
   },
   {
@@ -353,7 +353,7 @@ export const testimonials = [
     rating: 5,
     comment:
       "Valeycia est une personne très à l'écoute, disponible et bienveillante. Elle m'a beaucoup aidée.",
-    dateCreated: "01/02/24",
+    dateCreated: "01/02/2024",
     hourCreated: "15:39",
   },
   {
@@ -361,14 +361,14 @@ export const testimonials = [
     rating: 5,
     comment:
       "Vraiment, je recommande Valeycia qui est à l’écoute de son patient ???? J’ai pu récupérer mon pouvoir de femme et je vis ma sexualité ! Je suis une jeune femme épanouie et en constante évolution ! Je n’ai plus peur de vivre et je m’accepte telle que je suis ! Je ne cesse de lui dire merci depuis nos deux séances ( j’ai commencé le 29 novembre 23????????). Alors vraiment n’hésitez pas ! Osez ! Une belle découverte et je recommande ses talents ! Love you Valeycia????????????????",
-    dateCreated: "26/01/24",
+    dateCreated: "26/01/2024",
     hourCreated: "22:26",
   },
   {
     name: "Ikram J",
     rating: 4,
     comment: "",
-    dateCreated: "24/01/24",
+    dateCreated: "24/01/2024",
     hourCreated: "15:41",
   },
   {
@@ -376,7 +376,7 @@ export const testimonials = [
     rating: 5,
     comment:
       "Une très belle rencontre. Valeycia est une thérapeute disponible compétente dans l’empathie et la bienveillance. Elle propose des séances et des soins de qualité. Elle m’a tout de suite mise à l’aise. Je recommande vivement. Merci pour tout Valeycia.",
-    dateCreated: " 24/01/24",
+    dateCreated: " 24/01/2024",
     hourCreated: "15:41",
   },
   {
@@ -384,7 +384,7 @@ export const testimonials = [
     rating: 5,
     comment:
       "Accueil agréable et respectueux. Jai apprécié le contact facile qui m'a permis de me mettre a l'aise rapidement. Belle qualite d'écoute et une bienveillance à tous les niveaux. Je suis partie apaisée et sereine. Merci beaucoup.",
-    dateCreated: "18/01/24",
+    dateCreated: "18/01/2024",
     hourCreated: "23:13",
   },
   {
@@ -392,7 +392,7 @@ export const testimonials = [
     rating: 5,
     comment:
       "Je recommande vivement car elle est lumière et bienveillance. Ses soins de qualité vous apportent un bien être immédiat. Je vois le résultat au quotidien dans ma vie. Merci Valeycia !",
-    dateCreated: "06/01/24",
+    dateCreated: "06/01/2024",
     hourCreated: "13:06",
   },
   {
@@ -400,7 +400,7 @@ export const testimonials = [
     rating: 5,
     comment:
       "Le contact avec Valeycia est facile et agréable. Elle est toujours bienveillante, sans jugement et apporte une aide précieuse.",
-    dateCreated: "16/11/23",
+    dateCreated: "16/11/2023",
     hourCreated: "18:41",
   },
   {
@@ -408,7 +408,7 @@ export const testimonials = [
     rating: 5,
     comment:
       "Madame Valeycia FORTUNE est une thérapeute qui a beaucoup de bienveillance dans sa manière d'aborder les choses. Elle a su cerner mon problème et me mettre à l'aise afin que nous étudions ensemble des solutions pour résoudre ma situation et surtout pour me sentir mieux. Je la recommanderai à d'autres",
-    dateCreated: "26/09/23",
+    dateCreated: "26/09/2023",
     hourCreated: "14:54",
   },
 ];

@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { XCircle } from "lucide-react";
 
 const ServiceForm = ({
   isActive,
@@ -16,16 +15,9 @@ const ServiceForm = ({
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
         <div className="w-full max-w-md rounded-lg bg-white p-6 dark:bg-black">
-          <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-lg font-semibold">Nouveau service</h3>
-            <Button
-              variant={"outline"}
-              onClick={onClose}
-              className="bg-red-700 text-white hover:bg-red-800"
-            >
-              <XCircle className="h-4 w-4" />
-            </Button>
-          </div>
+          <h3 className="pb-6 text-center text-lg font-semibold uppercase">
+            Nouveau service
+          </h3>
 
           {/* FORM */}
           <form className="space-y-4">
@@ -103,15 +95,11 @@ const ServiceForm = ({
             </div>
 
             <div className="flex space-x-3 pt-4">
-              <Button
-                variant="secondary"
-                className="flex-1 bg-red-700 text-white hover:bg-red-800"
-                onClick={onClose}
-              >
+              <Button variant="closed" onClick={onClose} className="w-full">
                 Annuler
               </Button>
 
-              <Button variant="default" className="flex-1">
+              <Button variant="default" className="w-full">
                 Créer le service
               </Button>
             </div>

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -11,13 +13,12 @@ import {
   XCircle,
 } from "lucide-react";
 
-import { useState } from "react";
 import { sampleAppointments } from "@/data/data";
 import { Appointment } from "@/data/types";
 import { formatDate, formatTime } from "@/hooks/Date";
 import { Input } from "@/components/ui/input";
 import NewAppointmentForm from "./Form/NewAppointmentForm";
-import Badge from "./Badge";
+import { Badge } from "@/components/ui/badge";
 
 const AppointmentsView = () => {
   const [filterStatus, setFilterStatus] = useState<string>("all");
@@ -50,9 +51,12 @@ const AppointmentsView = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+      <div className="flex flex-col items-center justify-between gap-4 sm:flex-row sm:items-center">
         <h2 className="text-2xl font-bold">Gestion des Rendez-vous</h2>
-        <Button onClick={() => setShowNewAppointmentForm(true)}>
+        <Button
+          onClick={() => setShowNewAppointmentForm(true)}
+          variant={"closed"}
+        >
           <Plus className="mr-2 h-4 w-4" />
           Nouveau rendez-vous
         </Button>

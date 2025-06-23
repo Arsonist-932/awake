@@ -15,12 +15,16 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
         outline: "text-foreground",
+        inactive: "border-transparent bg-gray-100 text-gray-800",
+        success: "border-transparent bg-green-700 text-white",
+        warning: "border-transparent bg-yellow-100 text-yellow-800",
+        danger: "border-transparent bg-red-100 text-red-800",
       },
     },
     defaultVariants: {
       variant: "default",
     },
-  }
+  },
 );
 
 export interface BadgeProps

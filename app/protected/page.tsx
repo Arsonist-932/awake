@@ -47,9 +47,9 @@ const HypnotherapyDashboard: React.FC = () => {
   // Navigation items
   const navItems = [
     { id: "dashboard", label: "Tableau de bord", icon: Home },
+    { id: "analytics", label: "Analytics", icon: BarChart3 },
     { id: "appointments", label: "Rendez-vous", icon: Calendar },
     { id: "clients", label: "Clients", icon: Users },
-    { id: "analytics", label: "Analytics", icon: BarChart3 },
     { id: "podcasts", label: "Podcasts", icon: Mic },
     { id: "services", label: "Services", icon: Briefcase },
   ];
@@ -190,12 +190,12 @@ const HypnotherapyDashboard: React.FC = () => {
     switch (activeTab) {
       case "dashboard":
         return <DashboardOverview />;
+      case "analytics":
+        return <AnalyticsView />;
       case "appointments":
         return <AppointmentsView />;
       case "clients":
         return <ClientsView />;
-      case "analytics":
-        return <AnalyticsView />;
       case "podcasts":
         return <PodcastsView />;
       case "services":
@@ -224,8 +224,8 @@ const HypnotherapyDashboard: React.FC = () => {
                   onClick={() => setActiveTab(item.id)}
                   className={`mb-1 flex w-full items-center rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                     activeTab === item.id
-                      ? "bg-foreground/90 text-black"
-                      : "hover:bg-foreground/90 hover:text-black"
+                      ? "hover:bg-foreground/30"
+                      : "hover:bg-foreground/30"
                   }`}
                 >
                   <Icon className="mr-3 h-5 w-5" />
