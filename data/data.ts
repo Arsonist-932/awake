@@ -190,7 +190,7 @@ export const samplePodcasts: Podcast[] = [
     id: "1",
     title: "Introduction à l'Hypnose Thérapeutique",
     description: "Découvrez les bases de l'hypnothérapie et ses applications.",
-    coverImage: "/api/placeholder/300/300",
+    coverImage: "/images/about-img.jpg",
     audioFile: "podcast1.mp3",
     category: "Éducation",
     duration: 1860,
