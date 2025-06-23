@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { samplePodcasts } from "@/data/data";
-import { Edit, Mic, Play, Plus, Trash2 } from "lucide-react";
+import { Edit, Play, Plus, Trash2 } from "lucide-react";
 import { formatTime } from "@/hooks/Date";
 import { useMemo, useState } from "react";
 import PodcastForm from "./Form/PodcastForm";
