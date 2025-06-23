@@ -60,53 +60,57 @@ const PodcastsView = () => {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredPodcasts.map((podcast) => (
-            <Card key={podcast.id} className="relative p-6">
-              <div className="mb-4 flex aspect-square items-center justify-center rounded-lg">
+            <Card key={podcast.id} className="relative">
+              <div className="mb-4 flex aspect-square items-center justify-center rounded-lg p-0">
                 <Image
                   src={podcast.coverImage}
-                  alt="image"
                   width={500}
                   height={500}
+                  alt="image"
+                  className="w-full overflow-hidden rounded-t-lg"
                 />
-                <Mic className="h-12 w-12" />
               </div>
 
-              <h3 className="mb-2 font-semibold">{podcast.title}</h3>
+              <div className="p-3">
+                <h3 className="mb-2 font-semibold">{podcast.title}</h3>
 
-              <p className="mb-3 line-clamp-2 text-sm">{podcast.description}</p>
-              <div className="mb-3 flex items-center justify-between text-sm">
-                <span>{formatTime(Math.floor(podcast.duration / 60))}</span>
+                <p className="mb-3 line-clamp-2 text-sm">
+                  {podcast.description}
+                </p>
+                <div className="mb-3 flex items-center justify-between text-sm">
+                  <span>{formatTime(Math.floor(podcast.duration / 60))}</span>
 
-                <span>
-                  {new Date(podcast.uploadDate).toLocaleDateString("fr-FR")}
-                </span>
+                  <span>
+                    {new Date(podcast.uploadDate).toLocaleDateString("fr-FR")}
+                  </span>
 
-                <Badge className="absolute right-2 top-3 bg-green-800 text-white hover:bg-green-800">
-                  {podcast.category}
-                </Badge>
-              </div>
+                  <Badge className="absolute right-2 top-2 bg-green-800 text-white hover:bg-green-800">
+                    {podcast.category}
+                  </Badge>
+                </div>
 
-              <div className="mb-4 flex items-center justify-end text-xs">
-                <span>{podcast.downloads} téléchargements</span>
-              </div>
+                <div className="mb-4 flex items-center justify-end text-xs">
+                  <span>{podcast.downloads} téléchargements</span>
+                </div>
 
-              <div className="flex space-x-2">
-                <Button className="flex-1 bg-red-600 text-white hover:bg-red-800">
-                  <Play className="mr-1 h-4 w-4" />
-                  Écouter
-                </Button>
+                <div className="flex space-x-2">
+                  <Button className="flex-1 bg-red-600 text-white hover:bg-red-800">
+                    <Play className="mr-1 h-4 w-4" />
+                    Écouter
+                  </Button>
 
-                <Button
-                  className="p-2 hover:bg-transparent"
-                  variant="ghost"
-                  onClick={(e) => e.target}
-                >
-                  <Edit />
-                </Button>
+                  <Button
+                    className="p-2 hover:bg-transparent"
+                    variant="ghost"
+                    onClick={(e) => e.target}
+                  >
+                    <Edit />
+                  </Button>
 
-                <Button className="p-2 hover:bg-transparent" variant="ghost">
-                  <Trash2 size={50} />
-                </Button>
+                  <Button className="p-2 hover:bg-transparent" variant="ghost">
+                    <Trash2 size={50} />
+                  </Button>
+                </div>
               </div>
             </Card>
           ))}
