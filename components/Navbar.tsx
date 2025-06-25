@@ -11,10 +11,9 @@ const Navbar = () => {
   const navLinks: NavLink[] = [
     { href: "/#skills", label: "Compétences" },
     { href: "/#services", label: "Services" },
-    { href: "/podcasts", label: "Podcast" },
     { href: "/#testimonials", label: "Avis" },
+    { href: "/podcasts", label: "Podcast" },
     { href: "/contact", label: "Contact" },
-    { href: "/dashboard", label: "dashboard" },
   ];
 
   return (

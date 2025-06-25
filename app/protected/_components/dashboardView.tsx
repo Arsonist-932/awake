@@ -12,15 +12,8 @@ const DashboardView = () => {
   const [podcasts, setPodcasts] = useState<Podcast[]>(samplePodcasts);
   const [analytics] = useState<AnalyticsData>(sampleAnalytics);
 
-  const Testing = () => {
-    setActiveTab(activeTab);
-    setClients(clients);
-    setPodcasts(podcasts);
-  };
-
   return (
     <>
-      <button className="sr-only" onClick={Testing}></button>
       <div className="space-y-6">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           <Card className="p-6">
@@ -90,7 +83,7 @@ const DashboardView = () => {
               {sampleAppointments.slice(0, 3).map((appointment) => (
                 <div
                   key={appointment.id}
-                  className="flex items-center justify-between rounded-lg p-3"
+                  className="flex items-center justify-between rounded-lg bg-gray-50 p-3"
                 >
                   <div>
                     <p className="font-medium">{appointment.clientName}</p>

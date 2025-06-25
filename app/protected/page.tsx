@@ -42,7 +42,6 @@ const HypnotherapyDashboard: React.FC = () => {
   const testt = () => {
     setClients(clients);
     setPodcasts(podcasts);
-    console.log(analytics);
   };
 
   console.log(testt);

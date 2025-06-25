@@ -227,12 +227,10 @@ const PodcastsView = () => {
                 <div className="relative space-y-1 text-center">
                   {imagePreview ? (
                     <div className="space-y-2">
-                      <Image
+                      <img
                         src={imagePreview}
                         alt="Prévisualisation"
                         className="mx-auto h-full w-full rounded-md object-cover"
-                        height={300}
-                        width={300}
                       />
                       <button
                         type="button"
@@ -262,7 +260,7 @@ const PodcastsView = () => {
                       <label className="relative cursor-pointer rounded-md">
                         <Upload className="mx-auto h-12 w-12" />
                         <span>Télécharger une image ou glisser-déposer</span>
-                        <p className="text-xs">PNG, JPG jusqu&apos;à 5MB</p>
+                        <p className="text-xs">PNG, JPG jusqu'à 5MB</p>
 
                         <Input
                           id="image"

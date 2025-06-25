@@ -10,6 +10,7 @@ interface InputForm {
   min?: string;
   step?: string;
   value?: string;
+  required?: true;
   onChange?: (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement

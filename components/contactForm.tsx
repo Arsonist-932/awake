@@ -4,6 +4,15 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { useState } from "react";
+import TextArea from "./ui/textarea";
+import InputForm from "./InputForm";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const ContactForm = () => {
   const [isPending, setIsPending] = useState(false);
@@ -19,7 +28,7 @@ const ContactForm = () => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
@@ -56,57 +65,38 @@ const ContactForm = () => {
         >
           <div className="flex flex-col gap-6">
             {/* Nom et Prénom */}
-            <div className="flex flex-col md:flex-row md:gap-6">
-              <div className="flex-1">
-                <Label htmlFor="lastname" className="block text-sm font-medium">
-                  Nom *
-                </Label>
-                <Input
-                  id="lastname"
-                  name="lastname"
-                  value={formData.lastname}
-                  onChange={handleChange}
-                  placeholder="Nom"
-                  required
-                  className="mt-1 block w-full"
-                />
-              </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              <InputForm
+                id="lastname"
+                name="Nom *"
+                type="string"
+                value={formData.lastname}
+                onChange={handleChange}
+                placeholder="Indiquez votre nom"
+                required
+              />
 
-              <div className="mt-4 flex-1 md:mt-0">
-                <Label
-                  htmlFor="firstname"
-                  className="block text-sm font-medium"
-                >
-                  Prénom *
-                </Label>
-                <Input
-                  id="firstname"
-                  name="firstname"
-                  value={formData.firstname}
-                  onChange={handleChange}
-                  placeholder="Prénom"
-                  required
-                  className="mt-1 block w-full"
-                />
-              </div>
+              <InputForm
+                id="firstname"
+                name="Prénom *"
+                type="string"
+                value={formData.firstname}
+                onChange={handleChange}
+                placeholder="Indiquez votre prénom"
+                required
+              />
             </div>
 
             {/* Email */}
-            <div>
-              <Label htmlFor="email" className="block text-sm font-medium">
-                Email *
-              </Label>
-              <Input
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="you@example.com"
-                type="email"
-                required
-                className="mt-1 block w-full"
-              />
-            </div>
+            <InputForm
+              id="email"
+              name="Email *"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="you@exemple.com"
+              required
+            />
 
             {/* Téléphone */}
             <div>
@@ -126,40 +116,43 @@ const ContactForm = () => {
             </div>
 
             {/* Message Type */}
+
             <div>
-              <Label htmlFor="subject" className="block text-sm font-medium">
-                Type de message
+              <Label htmlFor="subject" className="block text-sm">
+                Type de message *
               </Label>
-              <select
-                id="subject"
-                name="subject"
+
+              <Select
                 value={formData.subject}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border p-2 shadow-sm focus:border-secondary focus:ring-secondary"
+                onValueChange={(value: string) =>
+                  setFormData((prev) => ({ ...prev, subject: value }))
+                }
               >
-                <option value="">Choisissez votre message</option>
-                <option value="project">Je veux participer à un projet</option>
-                <option value="quote">J&apos;ai besoin d&apos;un devis</option>
-                <option value="other">Autre</option>
-              </select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Sélectionner l'objet de votre message" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">Choisissez votre message</SelectItem>
+                  <SelectItem value="project">
+                    Je veux participer à un projet
+                  </SelectItem>
+                  <SelectItem value="quote">
+                    J&apos;ai besoin d&apos;un devis
+                  </SelectItem>
+                  <SelectItem value="other">Autres demandes</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             {/* Message */}
-            <div>
-              <Label htmlFor="message" className="block text-sm font-medium">
-                Message
-              </Label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Votre message"
-                required
-                rows={4}
-                className="mt-1 block w-full rounded-md border p-2 shadow-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus:border-secondary focus:ring-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent"
-              />
-            </div>
+            <TextArea
+              label="Message *"
+              id="message"
+              value={formData.message}
+              row={4}
+              placeholder="Rédigez votre demande ..."
+              onChange={handleChange}
+            />
 
             {/* Submit Button */}
             <div className="flex">
