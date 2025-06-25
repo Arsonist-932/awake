@@ -20,6 +20,8 @@ const DashboardView = () => {
 
   return (
     <>
+      <button className="sr-only" onClick={Testing}></button>
+
       <div className="space-y-6">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           <Card className="p-6">
