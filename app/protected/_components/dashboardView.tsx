@@ -90,7 +90,7 @@ const DashboardView = () => {
               {sampleAppointments.slice(0, 3).map((appointment) => (
                 <div
                   key={appointment.id}
-                  className="flex items-center justify-between rounded-lg bg-gray-50 p-3"
+                  className="flex items-center justify-between rounded-lg p-3"
                 >
                   <div>
                     <p className="font-medium">{appointment.clientName}</p>
