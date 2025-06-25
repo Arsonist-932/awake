@@ -227,10 +227,12 @@ const PodcastsView = () => {
                 <div className="relative space-y-1 text-center">
                   {imagePreview ? (
                     <div className="space-y-2">
-                      <img
+                      <Image
                         src={imagePreview}
                         alt="Prévisualisation"
                         className="mx-auto h-full w-full rounded-md object-cover"
+                        height={300}
+                        width={300}
                       />
                       <button
                         type="button"

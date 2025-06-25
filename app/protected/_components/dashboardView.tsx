@@ -12,6 +12,12 @@ const DashboardView = () => {
   const [podcasts, setPodcasts] = useState<Podcast[]>(samplePodcasts);
   const [analytics] = useState<AnalyticsData>(sampleAnalytics);
 
+  const Testing = () => {
+    setActiveTab(activeTab);
+    setClients(clients);
+    setPodcasts(podcasts);
+  };
+
   return (
     <>
       <div className="space-y-6">
