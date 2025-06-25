@@ -12,30 +12,15 @@ import {
   User,
 } from "lucide-react";
 import { AnalyticsData, Client, Podcast } from "@/data/types";
-import { sampleAppointments, sampleClients, samplePodcasts } from "@/data/data";
+import { sampleClients, samplePodcasts } from "@/data/data";
 import ClientsView from "./_components/ClientsView";
 import ServicesView from "./_components/ServicesView";
 import AppointmentsView from "./_components/Appointements";
 import AnalyticsView, { sampleAnalytics } from "./_components/AnalyticsView";
 import PodcastsView from "./_components/PodcastsView";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-import Badge from "./_components/Badge";
 import { Button } from "@/components/ui/button";
-
-// Components
-const Card = ({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => (
-  <div
-    className={`rounded-lg border border-gray-200 bg-white shadow-sm ${className}`}
-  >
-    {children}
-  </div>
-);
+import DashboardView from "./_components/dashboardView";
 
 // Dashboard Component
 const HypnotherapyDashboard: React.FC = () => {
@@ -62,134 +47,13 @@ const HypnotherapyDashboard: React.FC = () => {
   console.log(testt);
 
   // Dashboard Overview Component
-  const DashboardOverview = () => (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="p-6">
-          <div className="flex items-center">
-            <div className="rounded-lg bg-blue-100 p-2">
-              <Calendar className="h-6 w-6 text-blue-600" />
-            </div>
-            <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">
-                Rendez-vous aujourd&apos;hui
-              </p>
-              <p className="text-2xl font-semibold text-gray-900">
-                {
-                  sampleAppointments.filter((a) => a.date === "2025-06-20")
-                    .length
-                }
-              </p>
-            </div>
-          </div>
-        </Card>
-
-        <Card className="p-6">
-          <div className="flex items-center">
-            <div className="rounded-lg bg-green-100 p-2">
-              <Users className="h-6 w-6 text-green-600" />
-            </div>
-            <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">
-                Clients actifs
-              </p>
-              <p className="text-2xl font-semibold text-gray-900">
-                {clients.length}
-              </p>
-            </div>
-          </div>
-        </Card>
-
-        <Card className="p-6">
-          <div className="flex items-center">
-            <div className="rounded-lg bg-purple-100 p-2">
-              <Mic className="h-6 w-6 text-purple-600" />
-            </div>
-            <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">
-                Podcasts publiés
-              </p>
-              <p className="text-2xl font-semibold text-gray-900">
-                {podcasts.length}
-              </p>
-            </div>
-          </div>
-        </Card>
-
-        <Card className="p-6">
-          <div className="flex items-center">
-            <div className="rounded-lg bg-orange-100 p-2">
-              <BarChart3 className="h-6 w-6 text-orange-600" />
-            </div>
-            <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Vues ce mois</p>
-              <p className="text-2xl font-semibold text-gray-900">
-                {analytics.monthlyViews.toLocaleString()}
-              </p>
-            </div>
-          </div>
-        </Card>
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <Card className="p-6">
-          <h3 className="mb-4 text-lg font-semibold text-gray-900">
-            Prochains rendez-vous
-          </h3>
-          <div className="space-y-3">
-            {sampleAppointments.slice(0, 3).map((appointment) => (
-              <div
-                key={appointment.id}
-                className="flex items-center justify-between rounded-lg bg-gray-50 p-3"
-              >
-                <div>
-                  <p className="font-medium text-gray-900">
-                    {appointment.clientName}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {appointment.time} - {appointment.type}
-                  </p>
-                </div>
-                <Badge
-                  variant={
-                    appointment.status === "confirmed"
-                      ? "success"
-                      : appointment.status === "pending"
-                        ? "warning"
-                        : "danger"
-                  }
-                >
-                  {appointment.status}
-                </Badge>
-              </div>
-            ))}
-          </div>
-        </Card>
-
-        <Card className="p-6">
-          <h3 className="mb-4 text-lg font-semibold text-gray-900">
-            Analytics rapide
-          </h3>
-          <div className="space-y-4">
-            {analytics.topPages.slice(0, 4).map((page, index) => (
-              <div key={index} className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">{page.page}</span>
-                <span className="text-sm font-medium text-gray-900">
-                  {page.views} vues
-                </span>
-              </div>
-            ))}
-          </div>
-        </Card>
-      </div>
-    </div>
-  );
+  <DashboardView />;
 
   // Render content based on active tab
   const renderContent = () => {
     switch (activeTab) {
       case "dashboard":
-        return <DashboardOverview />;
+        return <DashboardView />;
       case "analytics":
         return <AnalyticsView />;
       case "appointments":
@@ -201,7 +65,7 @@ const HypnotherapyDashboard: React.FC = () => {
       case "services":
         return <ServicesView />;
       default:
-        return <DashboardOverview />;
+        return <DashboardView />;
     }
   };
 

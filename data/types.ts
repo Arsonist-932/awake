@@ -44,6 +44,7 @@ export interface Service {
   category: string;
   active: boolean;
   priceHistory: { price: number; date: string }[];
+  feature: string[];
 }
 
 export interface AnalyticsData {

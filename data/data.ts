@@ -224,6 +224,12 @@ export const sampleServices: Service[] = [
       { price: 75, date: "2025-01-01" },
       { price: 80, date: "2025-05-01" },
     ],
+    feature: [
+      "Séances de 1h30",
+      "Accompagnement approfondi pour des résultats durables.",
+      "Suivi et exercices pratiques.",
+      "Environnement bienveillant et confidentiel",
+    ],
   },
   {
     id: "2",
@@ -236,6 +242,12 @@ export const sampleServices: Service[] = [
     priceHistory: [
       { price: 85, date: "2025-01-01" },
       { price: 90, date: "2025-04-01" },
+    ],
+    feature: [
+      "Séances de 1h30",
+      "Accompagnement approfondi pour des résultats durables.",
+      "Suivi et exercices pratiques.",
+      "Environnement bienveillant et confidentiel",
     ],
   },
 ];

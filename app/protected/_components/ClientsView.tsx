@@ -4,8 +4,9 @@ import { sampleClients } from "@/data/data";
 import { Client } from "@/data/types";
 import { Edit, Eye, Plus } from "lucide-react";
 import { useMemo, useState } from "react";
-import ClientForm from "./Form/ClientForm";
 import SearchTerm from "@/components/Search";
+import ModalForm from "./ModalForm";
+import InputForm from "@/components/InputForm";
 
 const ClientsView = () => {
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
@@ -13,6 +14,22 @@ const ClientsView = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState<string>("all");
+
+  const [clientFormData, setClientFormData] = useState({
+    lastname: "",
+    fisrtname: "",
+    email: "",
+    phone: "",
+    avatar: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    setClientFormData({ ...clientFormData, [e.target.id]: e.target.value });
+  };
 
   // Logique de filtrage
   const filteredClients = useMemo(() => {
@@ -31,6 +48,8 @@ const ClientsView = () => {
       return matchesSearch && matchesStatus;
     });
   }, [searchTerm, filterStatus]);
+
+  const handleSubmit = () => {};
 
   return (
     <>
@@ -63,12 +82,13 @@ const ClientsView = () => {
                 <h3 className="font-semibold">{client.name}</h3>
 
                 <div className="flex space-x-3">
-                  <button onClick={() => setSelectedClient(client)}>
-                    {selectedClient?.name} <Eye className="h-4 w-4" />
+                  <button>
+                    <Eye className="h-4 w-4" />
                   </button>
 
-                  <button>
+                  <button onClick={() => setSelectedClient(client)}>
                     <Edit className="h-4 w-4" />
+                    {selectedClient?.email}
                   </button>
                 </div>
               </div>
@@ -97,10 +117,59 @@ const ClientsView = () => {
       </Card>
 
       {showNewClientForm && (
-        <ClientForm
-          isActive={true}
+        <ModalForm
+          title="Créer un nouvelle fiche client"
+          isOpen={showNewClientForm}
           onClose={() => setShowNewClientForm(false)}
-        />
+          onSubmit={handleSubmit}
+          submitLabel="Nouveau Client"
+        >
+          <div className="space-y-4">
+            <InputForm
+              name="Nom *"
+              id="lastname"
+              type="text"
+              placeholder=""
+              value=""
+              onChange={handleChange}
+            />
+
+            <InputForm
+              name="Prénom *"
+              id="firstname"
+              type="text="
+              value=""
+              onChange={handleChange}
+            />
+
+            <InputForm
+              name="email"
+              id="Email *"
+              type="email"
+              placeholder=""
+              value=""
+              onChange={handleChange}
+            />
+
+            <InputForm
+              name="Téléphone"
+              id="phone"
+              type="text"
+              placeholder=""
+              value=""
+              onChange={handleChange}
+            />
+
+            <InputForm
+              name="Avatar"
+              id="photo"
+              type="file"
+              placeholder=""
+              value=""
+              onChange={handleChange}
+            />
+          </div>
+        </ModalForm>
       )}
     </>
   );

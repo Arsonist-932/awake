@@ -1,7 +1,24 @@
 import { useState } from "react";
+import InputForm from "@/components/InputForm";
+import { Label } from "@/components/ui/label";
 
+import { sampleAppointments } from "@/data/data";
+import { Appointment } from "@/data/types";
+import { formatDate, formatTime } from "@/hooks/Date";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import ModalForm from "./ModalForm";
+import TextArea from "@/components/ui/textarea";
+import { sampleClients } from "@/data/data";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   AlertCircle,
   CheckCircle,
@@ -12,13 +29,6 @@ import {
   Trash2,
   XCircle,
 } from "lucide-react";
-
-import { sampleAppointments } from "@/data/data";
-import { Appointment } from "@/data/types";
-import { formatDate, formatTime } from "@/hooks/Date";
-import { Input } from "@/components/ui/input";
-import NewAppointmentForm from "./Form/NewAppointmentForm";
-import { Badge } from "@/components/ui/badge";
 
 const AppointmentsView = () => {
   const [filterStatus, setFilterStatus] = useState<string>("all");
@@ -39,6 +49,19 @@ const AppointmentsView = () => {
       filterStatus === "all" || appointment.status === filterStatus;
     return matchesSearch && matchesStatus;
   });
+
+  const [appointementFormData, setAppointementFormData] = useState({
+    client: "",
+    date: "",
+    hour: "",
+    type: "",
+    duration: "",
+    note: "",
+  });
+
+  const handleChange = () => {};
+
+  const handleSubmit = () => {};
 
   const test = () => {
     if (selectedAppointment) {
@@ -190,12 +213,115 @@ const AppointmentsView = () => {
       </button>
 
       {showNewAppointmentForm && (
-        <NewAppointmentForm
-          isActive={true}
-          onClose={() => {
-            setShowNewAppointmentForm(false);
-          }}
-        />
+        <ModalForm
+          title="Créer un nouveau RDV"
+          isOpen={showNewAppointmentForm}
+          onClose={() => setShowNewAppointmentForm(false)}
+          onSubmit={handleSubmit}
+          submitLabel="Ajouter le RDV"
+        >
+          <div className="space-y-4">
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="type">Client *</Label>
+
+              <Select
+                value={appointementFormData.client}
+                onValueChange={(value: string) =>
+                  setAppointementFormData((prev) => ({
+                    ...prev,
+                    client: value,
+                  }))
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Sélectionner un client" />
+                </SelectTrigger>
+                <SelectContent>
+                  {sampleClients.map((client, index) => (
+                    <SelectItem key={index} value={client.name}>
+                      {client.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <InputForm
+                id="date"
+                name="Date de réservation *"
+                type="date"
+                value={appointementFormData.date}
+                onChange={handleChange}
+              />
+
+              <InputForm
+                id="hour"
+                name="Heure de réservation *"
+                type="time"
+                value={appointementFormData.hour}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div>
+              <Label className="mb-1 block text-sm font-medium">
+                Type de séance *
+              </Label>
+
+              <Select
+                value={appointementFormData.type}
+                onValueChange={(value: string) =>
+                  setAppointementFormData((prev) => ({ ...prev, type: value }))
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Sélectionner un type de RDV" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Hypnothérapie">Hypnothérapie</SelectItem>
+                  <SelectItem value="Coaching">Coaching</SelectItem>
+                  <SelectItem value="Consultation">Consultation</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <Label className="mb-1 block text-sm font-medium">
+                Durée (minutes)
+              </Label>
+
+              <Select
+                value={appointementFormData.duration}
+                onValueChange={(value: string) =>
+                  setAppointementFormData((prev) => ({
+                    ...prev,
+                    duration: value,
+                  }))
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Sélectionner une durée" />
+                </SelectTrigger>
+
+                <SelectContent>
+                  <SelectItem value="60">60 minutes</SelectItem>
+                  <SelectItem value="90">90 minutes</SelectItem>
+                  <SelectItem value="120">120 minutes</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <TextArea
+              id="note"
+              label="Note (optionnel)"
+              value=""
+              row={2}
+              placeholder="Notes sur le rendez-vous..."
+              onChange={handleChange}
+            />
+          </div>
+        </ModalForm>
       )}
     </div>
   );

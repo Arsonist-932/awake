@@ -1,19 +1,56 @@
 import { useMemo, useState } from "react";
 import { Edit, Plus, Trash2 } from "lucide-react";
 
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-
 import { formatTime } from "@/hooks/Date";
 import { sampleServices } from "@/data/data";
+
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import TextArea from "@/components/ui/textarea";
+
 import SearchTerm from "@/components/Search";
-import ServiceForm from "./Form/NewServiceForm";
+import ModalForm from "./ModalForm";
+import InputForm from "@/components/InputForm";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const ServicesView = () => {
   const [showNewServiceForm, setShowNewServiceForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState<string>("all");
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    price: "",
+    duration: "",
+    category: "",
+    feature: "",
+    active: true || false,
+  });
+
+  const handleSubmit = () => {
+    console.log(formData);
+  };
+
+  const handleDelete = () => {
+    confirm("Êtes-vous sûr de vouloir supprimer ce service ?");
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
 
   const statusFilterOptions = [
     { value: "all", label: "Tous les statuts" },
@@ -86,6 +123,7 @@ const ServicesView = () => {
                     <Button
                       className="p-0 hover:bg-transparent"
                       variant="ghost"
+                      onClick={handleDelete}
                     >
                       <Trash2 />
                     </Button>
@@ -93,7 +131,16 @@ const ServicesView = () => {
                 </div>
               </div>
 
-              <p className="mb-4 text-xs">{service.description}</p>
+              <p className="text-xs">{service.description}</p>
+
+              <div className="flex flex-col gap-2 py-6">
+                {service.feature.map((feature, index) => (
+                  <div className="flex items-center gap-2" key={index}>
+                    <span className="h-2 w-2 rounded-full border bg-red-700"></span>
+                    <p className="text-xs">{feature}</p>
+                  </div>
+                ))}
+              </div>
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
@@ -139,10 +186,107 @@ const ServicesView = () => {
       </div>
 
       {showNewServiceForm && (
-        <ServiceForm
-          isActive={true}
+        <ModalForm
+          title="Créer un nouveau service"
+          isOpen={showNewServiceForm}
           onClose={() => setShowNewServiceForm(false)}
-        />
+          onSubmit={handleSubmit}
+          submitLabel="Publier le service"
+        >
+          <div className="space-y-4">
+            <InputForm
+              id="name"
+              name="Nom du service *"
+              placeholder=""
+              type="text"
+              value={formData.name}
+              onChange={handleChange}
+            />
+
+            <TextArea
+              label="Description *"
+              id="description"
+              row={3}
+              placeholder="Description détaillée du service"
+              value={formData.description}
+              onChange={handleChange}
+            />
+
+            <InputForm
+              id="feature"
+              name="Features"
+              placeholder="Incrivez ce qui est inclus dans l'offre"
+              type="text"
+              value={formData.feature}
+              onChange={handleChange}
+            />
+
+            <div className="grid grid-cols-2 items-center gap-6">
+              <InputForm
+                id="price"
+                name="Prix (€) *"
+                placeholder="0"
+                type="number"
+                min={"5"}
+                step={"5"}
+                value={formData.price}
+                onChange={handleChange}
+              />
+
+              <div>
+                <Label className="mb-1 block text-sm font-medium">
+                  Durée (min) *
+                </Label>
+
+                <Select
+                  value={formData.duration}
+                  onValueChange={(value: string) =>
+                    setFormData((prev) => ({ ...prev, duration: value }))
+                  }
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Sélectionner une durée" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="30">30 minutes</SelectItem>
+                    <SelectItem value="60">60 minutes</SelectItem>
+                    <SelectItem value="90">90 minutes</SelectItem>
+                    <SelectItem value="120">120 minutes</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            <Select
+              value={formData.category}
+              onValueChange={(value: string) =>
+                setFormData((prev) => ({ ...prev, category: value }))
+              }
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Sélectionner une catégorie" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="3Hypnothérapie0">Hypnothérapie</SelectItem>
+                <SelectItem value="Hypnothérapie">Hypnothérapie</SelectItem>
+                <SelectItem value="Consultation">Consultation</SelectItem>
+                <SelectItem value="Formation">Formation</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <div className="flex items-center">
+              <Input
+                type="checkbox"
+                id="active"
+                className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500"
+                onChange={handleChange}
+              />
+              <Label htmlFor="active" className="ml-2 block text-sm">
+                Service actif (visible sur le site)
+              </Label>
+            </div>
+          </div>
+        </ModalForm>
       )}
     </>
   );
