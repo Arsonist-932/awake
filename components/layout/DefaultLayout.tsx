@@ -11,7 +11,7 @@ export function DefaultLayout({
       <Navbar />
 
       <main className="flex flex-col items-center">
-        <div className="flex max-w-5xl flex-col gap-20 max-sm:p-5">
+        <div className="flex max-w-5xl flex-col gap-10 max-sm:p-5">
           {children}
         </div>
       </main>

@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { AnalyticsData } from "@/data/types";
+import { AnalyticsData } from "@/types/types";
 
 export const sampleAnalytics: AnalyticsData = {
   totalViews: 12456,

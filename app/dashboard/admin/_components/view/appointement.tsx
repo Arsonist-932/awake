@@ -3,11 +3,11 @@ import InputForm from "@/components/InputForm";
 import { Label } from "@/components/ui/label";
 
 import { sampleAppointments } from "@/data/data";
-import { Appointment } from "@/data/types";
-import { formatDate, formatTime } from "@/hooks/Date";
+import { Appointment } from "@/types/types";
+import { formatDate, formatTime } from "@/services/Date";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import ModalForm from "./ModalForm";
+import ModalForm from "../ModalForm";
 import TextArea from "@/components/ui/textarea";
 import { sampleClients } from "@/data/data";
 import { Button } from "@/components/ui/button";
@@ -29,6 +29,8 @@ import {
   Trash2,
   XCircle,
 } from "lucide-react";
+import SelectDashboard from "@/components/SelectDashboard";
+import Filter from "@/components/filter";
 
 const AppointmentsView = () => {
   const [filterStatus, setFilterStatus] = useState<string>("all");
@@ -88,30 +90,22 @@ const AppointmentsView = () => {
       {/* Search */}
       <Card className="space-y-6 p-6">
         <div className="flex flex-col items-center gap-4 sm:flex-row">
-          <div className="flex-1">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+          <Filter
+            value={searchTerm}
+            placeholder="Rechercher un client ou type de séance..."
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
 
-              <Input
-                type="text"
-                placeholder="Rechercher un client ou type de séance..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full rounded-md border border-gray-300 py-2 pl-10 pr-4 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-          </div>
-
-          <select
+          <SelectDashboard
             value={filterStatus}
-            onChange={(e) => setFilterStatus(e.target.value)}
-            className="rounded-md border border-gray-300 px-3 py-2"
+            onValueChange={(value) => setFilterStatus(value)}
+            placeholder=""
           >
-            <option value="all">Tous les statuts</option>
-            <option value="confirmed">Confirmé</option>
-            <option value="pending">En attente</option>
-            <option value="cancelled">Annulé</option>
-          </select>
+            <SelectItem value="all">Tous les statuts</SelectItem>{" "}
+            <SelectItem value="confirmed">Confirmé</SelectItem>
+            <SelectItem value="pending">En attente</SelectItem>
+            <SelectItem value="cancelled">Annulé</SelectItem>
+          </SelectDashboard>
         </div>
 
         {/* Tableau Clients */}

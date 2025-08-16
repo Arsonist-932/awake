@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { formatDate, formatTime } from "@/hooks/Date";
+import { formatDate, formatTime } from "@/services/Date";
 import { XCircle } from "lucide-react";
-import { Appointment } from "@/data/types";
+import { Appointment } from "@/types/types";
 import { Badge } from "@/components/ui/badge";
 
 interface AppointmentModalProps {

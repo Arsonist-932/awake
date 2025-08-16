@@ -1,5 +1,5 @@
-import ContactForm from "@/components/contactForm";
-import { DefaultLayout } from "@/components/DefaultLayout";
+import { DefaultLayout } from "@/components/layout/DefaultLayout";
+import ContactForm from "./_components/contactForm";
 
 const Contact = () => {
   return (

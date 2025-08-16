@@ -1,4 +1,7 @@
+"use client";
+import { createClient } from "@/lib/supabase/client";
 import { Button } from "./ui/button";
+import { useEffect, useState } from "react";
 
 interface PricingProps {
   title: string;
@@ -7,6 +10,14 @@ interface PricingProps {
   devise?: string;
   Features: string[];
   button: string;
+}
+
+export interface ServicesProps {
+  id: number;
+  name: string;
+  description?: string;
+  price?: number;
+  category?: number;
 }
 
 const Princing = ({ Array }: { Array: PricingProps[] }) => {
@@ -41,7 +52,7 @@ const Princing = ({ Array }: { Array: PricingProps[] }) => {
 
           <Button
             variant={"primary"}
-            className="rounded-sm transition duration-300 "
+            className="rounded-sm transition duration-300"
           >
             {service.button}
           </Button>

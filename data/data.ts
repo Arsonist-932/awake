@@ -1,4 +1,4 @@
-import { Appointment, Client, Podcast, Service } from "./types";
+import { Appointment, Client, Podcast, Service } from "../types/types";
 
 export const categoriesSkills = [
   {

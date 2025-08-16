@@ -1,12 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { sampleClients } from "@/data/data";
-import { Client } from "@/data/types";
+import { Client } from "@/types/types";
 import { Edit, Eye, Plus } from "lucide-react";
 import { useMemo, useState } from "react";
-import SearchTerm from "@/components/Search";
-import ModalForm from "./ModalForm";
 import InputForm from "@/components/InputForm";
+import ModalForm from "../ModalForm";
+import Filter from "@/components/filter";
+import SelectDashboard from "@/components/SelectDashboard";
+import { SelectItem } from "@/components/ui/select";
 
 const ClientsView = () => {
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
@@ -63,13 +65,25 @@ const ClientsView = () => {
       </div>
 
       {/* Search Bar */}
-      <SearchTerm
-        searchTerm={searchTerm}
-        onSearchChange={setSearchTerm}
-        searchPlaceholder="Rechercher un client..."
-        filterValue={filterStatus}
-        onFilterChange={setFilterStatus}
-      />
+      <div className="flex flex-col items-center gap-4 py-6 lg:flex-row">
+        <Filter
+          value={searchTerm}
+          placeholder="Rechercher un client..."
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+
+        <SelectDashboard
+          value={filterStatus}
+          placeholder="Tous les clients"
+          onValueChange={(value) => {
+            setFilterStatus(value);
+          }}
+        >
+          <SelectItem value="all">Tous les client</SelectItem>
+          <SelectItem value="order">Tri : A-Z</SelectItem>
+          <SelectItem value="desorder">Tri : Z - A</SelectItem>
+        </SelectDashboard>
+      </div>
 
       <Card className="p-6">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

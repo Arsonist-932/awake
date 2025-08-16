@@ -1,18 +1,19 @@
 "use client";
-import { Send } from "lucide-react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
 import { useState } from "react";
-import TextArea from "./ui/textarea";
-import InputForm from "./InputForm";
+import { Send } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import TextArea from "@/components/ui/textarea";
+import InputForm from "@/components/InputForm";
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
+} from "@/components/ui/select";
 
 const ContactForm = () => {
   const [isPending, setIsPending] = useState(false);
@@ -99,50 +100,38 @@ const ContactForm = () => {
             />
 
             {/* Téléphone */}
-            <div>
-              <Label htmlFor="phone" className="block text-sm font-medium">
-                Téléphone *
-              </Label>
-              <Input
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="N° de téléphone"
-                type="tel"
-                required
-                className="mt-1 block w-full"
-              />
-            </div>
+            <InputForm
+              id="phone"
+              name="Téléphone *"
+              type="tel"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="N° de téléphone"
+              required
+            />
 
             {/* Message Type */}
 
-            <div>
-              <Label htmlFor="subject" className="block text-sm">
-                Type de message *
-              </Label>
-
-              <Select
-                value={formData.subject}
-                onValueChange={(value: string) =>
-                  setFormData((prev) => ({ ...prev, subject: value }))
-                }
-              >
+            <Select
+              value={formData.subject}
+              onValueChange={(value: string) =>
+                setFormData((prev) => ({ ...prev, subject: value }))
+              }
+            >
+              <SelectGroup>
+                <SelectLabel className="p-0 py-1 text-sm text-white">
+                  Objet du message *
+                </SelectLabel>
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Sélectionner l'objet de votre message" />
+                  <SelectValue placeholder="Sélectionner l'objet du message" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="none">Choisissez votre message</SelectItem>
-                  <SelectItem value="project">
-                    Je veux participer à un projet
-                  </SelectItem>
-                  <SelectItem value="quote">
-                    J&apos;ai besoin d&apos;un devis
-                  </SelectItem>
+                  <SelectItem value="project">Informations</SelectItem>
+                  <SelectItem value="quote">Demande de devis</SelectItem>
                   <SelectItem value="other">Autres demandes</SelectItem>
                 </SelectContent>
-              </Select>
-            </div>
+              </SelectGroup>
+            </Select>
 
             {/* Message */}
             <TextArea

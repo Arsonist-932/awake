@@ -38,7 +38,7 @@ export default function UserDropdownMenu({
               {/* <PROFIL /> */}
               <DropdownMenuItem>
                 <UserCircle className="mr-2 h-4 w-4" />
-                <Link href={""}>Mon profil</Link>
+                <Link href={"/dashboard/profile"}>Mon profil</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Bell className="mr-2 h-4 w-4" />

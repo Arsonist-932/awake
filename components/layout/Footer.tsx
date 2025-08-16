@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Linkedin } from "lucide-react";
-import { ThemeSwitcher } from "./theme-switcher";
+import { ThemeSwitcher } from "../ui/theme-switcher";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

@@ -1,26 +1,18 @@
 import { useMemo, useState } from "react";
 import { Edit, Plus, Trash2 } from "lucide-react";
-
-import { formatTime } from "@/hooks/Date";
+import { formatTime } from "@/services/Date";
 import { sampleServices } from "@/data/data";
-
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import TextArea from "@/components/ui/textarea";
-
-import SearchTerm from "@/components/Search";
-import ModalForm from "./ModalForm";
+import ModalForm from "../ModalForm";
 import InputForm from "@/components/InputForm";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { SelectItem } from "@/components/ui/select";
+import Filter from "@/components/filter";
+import SelectDashboard from "@/components/SelectDashboard";
 
 const ServicesView = () => {
   const [showNewServiceForm, setShowNewServiceForm] = useState(false);
@@ -51,12 +43,6 @@ const ServicesView = () => {
   ) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
-
-  const statusFilterOptions = [
-    { value: "all", label: "Tous les statuts" },
-    { value: "active", label: "Actif" },
-    { value: "inactive", label: "Inactif" },
-  ];
 
   // Logique de filtrage
   const filteredServices = useMemo(() => {
@@ -90,15 +76,26 @@ const ServicesView = () => {
         </div>
 
         {/* Search */}
-        <SearchTerm
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-          searchPlaceholder="Rechercher un service, description ..."
-          showFilter={true}
-          filterValue={filterStatus}
-          onFilterChange={setFilterStatus}
-          filterOptions={statusFilterOptions}
-        />
+        <div className="flex flex-col gap-4 py-6 lg:flex-row">
+          <Filter
+            value={searchTerm}
+            placeholder="Rechercher un service ou une offre ..."
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
+
+          <SelectDashboard
+            value={filterStatus}
+            onValueChange={(value) => {
+              setFilterStatus(value);
+            }}
+          >
+            <SelectItem value="all">Tous les services</SelectItem>
+            <SelectItem value="active">Active</SelectItem>
+            <SelectItem value="inactive">Inactif</SelectItem>
+          </SelectDashboard>
+        </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {filteredServices.map((service) => (
@@ -233,46 +230,53 @@ const ServicesView = () => {
                 onChange={handleChange}
               />
 
-              <div>
-                <Label className="mb-1 block text-sm font-medium">
-                  Durée (min) *
-                </Label>
+              <div className="flex flex-col gap-1">
+                <Label>Durée *</Label>
 
-                <Select
+                <SelectDashboard
+                  placeholder="Selectionner une durée*"
                   value={formData.duration}
                   onValueChange={(value: string) =>
                     setFormData((prev) => ({ ...prev, duration: value }))
                   }
                 >
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Sélectionner une durée" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="30">30 minutes</SelectItem>
-                    <SelectItem value="60">60 minutes</SelectItem>
-                    <SelectItem value="90">90 minutes</SelectItem>
-                    <SelectItem value="120">120 minutes</SelectItem>
-                  </SelectContent>
-                </Select>
+                  <SelectItem value="30" className="text-xs md:text-sm">
+                    30 minutes
+                  </SelectItem>
+                  <SelectItem value="60" className="text-xs md:text-sm">
+                    60 minutes
+                  </SelectItem>
+                  <SelectItem value="90" className="text-xs md:text-sm">
+                    90 minutes
+                  </SelectItem>
+                  <SelectItem value="120" className="text-xs md:text-sm">
+                    120 minutes
+                  </SelectItem>
+                </SelectDashboard>
               </div>
             </div>
 
-            <Select
+            <SelectDashboard
+              label=" Catégorie de l'offre *"
+              placeholder="Sélectionner une catégorie"
               value={formData.category}
               onValueChange={(value: string) =>
                 setFormData((prev) => ({ ...prev, category: value }))
               }
             >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Sélectionner une catégorie" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="3Hypnothérapie0">Hypnothérapie</SelectItem>
-                <SelectItem value="Hypnothérapie">Hypnothérapie</SelectItem>
-                <SelectItem value="Consultation">Consultation</SelectItem>
-                <SelectItem value="Formation">Formation</SelectItem>
-              </SelectContent>
-            </Select>
+              <SelectItem value="all" className="text-xs md:text-sm">
+                Toutes les catégories
+              </SelectItem>
+              <SelectItem value="Hypnothérapie" className="text-xs md:text-sm">
+                Hypnothérapie
+              </SelectItem>
+              <SelectItem value="Consultation" className="text-xs md:text-sm">
+                Consultation
+              </SelectItem>
+              <SelectItem value="Formation" className="text-xs md:text-sm">
+                Formation
+              </SelectItem>
+            </SelectDashboard>
 
             <div className="flex items-center">
               <Input

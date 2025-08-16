@@ -1,10 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { Calendar, Users, BarChart3, Mic } from "lucide-react";
-import { AnalyticsData, Client, Podcast } from "@/data/types";
+import { AnalyticsData, Client, Podcast } from "@/types/types";
 import { sampleAppointments, sampleClients, samplePodcasts } from "@/data/data";
-import { sampleAnalytics } from "./AnalyticsView";
 import { Badge } from "@/components/ui/badge";
+import { sampleAnalytics } from "./analytics";
 
 const DashboardView = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -91,7 +91,7 @@ const DashboardView = () => {
               {sampleAppointments.slice(0, 3).map((appointment) => (
                 <div
                   key={appointment.id}
-                  className="flex items-center justify-between rounded-lg bg-gray-50 p-3"
+                  className="flex items-center justify-between rounded-lg p-3"
                 >
                   <div>
                     <p className="font-medium">{appointment.clientName}</p>

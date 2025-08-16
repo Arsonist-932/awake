@@ -3,13 +3,14 @@ import { Label } from "./ui/label";
 
 interface InputForm {
   id: string;
-  name: string;
+  name: string | boolean;
   type: string;
   placeholder?: string;
   classname?: string;
   min?: string;
   step?: string;
   value?: string;
+  defaultValue?: string;
   required?: true;
   onChange?: (
     e: React.ChangeEvent<
@@ -26,6 +27,7 @@ const InputForm = ({
   min,
   step,
   value,
+  defaultValue,
   onChange,
 }: InputForm) => {
   return (
@@ -35,14 +37,16 @@ const InputForm = ({
           {name}
         </Label>
         <Input
-          className="text-sm"
+          className="py-5 text-sm"
           type={type}
           id={id}
           placeholder={placeholder}
           min={min}
           step={step}
           value={value}
+          defaultValue={defaultValue}
           onChange={onChange}
+          autoComplete="off"
         />
       </div>
     </>

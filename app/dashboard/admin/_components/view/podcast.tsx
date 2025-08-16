@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 
-import { formatTime } from "@/hooks/Date";
+import { formatTime } from "@/services/Date";
 import { samplePodcasts } from "@/data/data";
-import SearchTerm from "@/components/Search";
-import ModalForm from "./ModalForm";
+import SearchTerm from "@/app/dashboard/admin/_components/Search";
+
 import InputForm from "@/components/InputForm";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,6 +22,9 @@ import {
 } from "@/components/ui/select";
 import TextArea from "@/components/ui/textarea";
 import { Mic, Upload } from "lucide-react";
+import ModalForm from "../ModalForm";
+import Filter from "@/components/filter";
+import SelectDashboard from "@/components/SelectDashboard";
 
 const PodcastsView = () => {
   // LOGIQUE DE FILTRAGE
@@ -123,13 +126,25 @@ const PodcastsView = () => {
         </section>
 
         {/* Search Bar */}
-        <SearchTerm
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-          searchPlaceholder="Rechercher un podcast..."
-          filterValue={filterStatus}
-          onFilterChange={setFilterStatus}
-        />
+        <div className="flex flex-col items-center gap-4 py-6 lg:flex-row">
+          <Filter
+            value={searchTerm}
+            placeholder="Rechercher un podcast ..."
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
+
+          <SelectDashboard
+            value={filterStatus}
+            onValueChange={(value) => {
+              setFilterStatus(value);
+            }}
+            placeholder="Tous les podcasts"
+          >
+            <SelectItem value="all">Tous les podcasts</SelectItem>
+          </SelectDashboard>
+        </div>
 
         <div className="grid grid-cols-2 gap-6 lg:grid-cols-3">
           {filteredPodcasts.map((podcast) => (

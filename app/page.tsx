@@ -1,9 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-
-import { DefaultLayout } from "@/components/DefaultLayout";
-
+import { DefaultLayout } from "@/components/layout/DefaultLayout";
 import { ArrayServices, ArrayServicesPro } from "@/data/data";
 import Princing from "@/components/Princing";
 import Skills from "@/components/Skills";
