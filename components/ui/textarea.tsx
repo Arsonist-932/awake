@@ -1,18 +1,49 @@
-import * as React from "react"
+import { Label } from "./label";
 
-import { cn } from "@/lib/utils"
-
-function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
-  return (
-    <textarea
-      data-slot="textarea"
-      className={cn(
-        "border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-        className
-      )}
-      {...props}
-    />
-  )
+interface TextAreaProps {
+  label: string;
+  id: string;
+  required?: boolean;
+  row?: number;
+  placeholder: string;
+  classname?: string;
+  value?: string;
+  onChange?: (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => void;
 }
 
-export { Textarea }
+const TextArea = ({
+  label,
+  id,
+  required,
+  row,
+  placeholder,
+  classname,
+  value,
+  onChange,
+}: TextAreaProps) => {
+  return (
+    <>
+      <div className={`${classname}`}>
+        <Label htmlFor={id} className="mb-1 block text-sm">
+          {label}
+        </Label>
+
+        <textarea
+          id={id}
+          rows={row}
+          required={required}
+          className="w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm"
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        ></textarea>
+      </div>
+    </>
+  );
+};
+
+export default TextArea;

@@ -1,11 +1,9 @@
 import { useState } from "react";
 import InputForm from "@/components/InputForm";
 import { Label } from "@/components/ui/label";
-
 import { sampleAppointments } from "@/data/data";
 import { Appointment } from "@/types/types";
 import { formatDate, formatTime } from "@/services/Date";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import ModalForm from "../ModalForm";
 import TextArea from "@/components/ui/textarea";
@@ -25,7 +23,6 @@ import {
   Edit,
   Eye,
   Plus,
-  Search,
   Trash2,
   XCircle,
 } from "lucide-react";

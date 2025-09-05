@@ -25,7 +25,7 @@ export default async function Page({
                 </p>
               ) : (
                 <p className="text-sm text-muted-foreground">
-                  Une erreur indéterminée s'est produite.
+                  Une erreur indéterminée s&apos;est produite.
                 </p>
               )}
             </CardContent>
