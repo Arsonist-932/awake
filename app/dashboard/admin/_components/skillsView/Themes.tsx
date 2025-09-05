@@ -6,7 +6,7 @@ import { Edit, Plus, Trash2 } from "lucide-react";
 interface ThemeProps {
   category: Category;
   setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
-  setFormData: React.Dispatch<React.SetStateAction<Object>>;
+  setFormData: React.Dispatch<React.SetStateAction<Record<string, unknown>>>;
 }
 
 const Themes = ({ category, setShowForm, setFormData }: ThemeProps) => {

@@ -9,7 +9,7 @@ interface CardCatProps {
   children?: ReactNode;
   showForm?: boolean;
   setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
-  setFormData: React.Dispatch<React.SetStateAction<Object>>;
+  setFormData: React.Dispatch<React.SetStateAction<Record<string, unknown>>>;
 }
 
 const CardsCat = ({
