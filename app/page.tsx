@@ -3,9 +3,9 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { DefaultLayout } from "@/components/layout/DefaultLayout";
 import { ArrayServices, ArrayServicesPro } from "@/data/data";
-import Princing from "@/components/Princing";
-import Skills from "@/components/Skills";
-import Testimonials from "@/components/Testimonials";
+import Princing from "@/components/home/Princing";
+import Skills from "@/components/home/Skills";
+import Testimonials from "@/components/home/Testimonials";
 
 export default function Home() {
   return (

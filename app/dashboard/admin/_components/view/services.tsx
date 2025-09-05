@@ -12,7 +12,7 @@ import ModalForm from "../ModalForm";
 import InputForm from "@/components/InputForm";
 import { SelectItem } from "@/components/ui/select";
 import Filter from "@/components/filter";
-import SelectDashboard from "@/components/SelectDashboard";
+import SelectDashboard from "@/components/Selecteur";
 
 const ServicesView = () => {
   const [showNewServiceForm, setShowNewServiceForm] = useState(false);

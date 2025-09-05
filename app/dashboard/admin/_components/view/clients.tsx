@@ -7,7 +7,7 @@ import { useMemo, useState } from "react";
 import InputForm from "@/components/InputForm";
 import ModalForm from "../ModalForm";
 import Filter from "@/components/filter";
-import SelectDashboard from "@/components/SelectDashboard";
+import SelectDashboard from "@/components/Selecteur";
 import { SelectItem } from "@/components/ui/select";
 
 const ClientsView = () => {

@@ -8,7 +8,6 @@ import { Card } from "@/components/ui/card";
 
 import { formatTime } from "@/services/Date";
 import { samplePodcasts } from "@/data/data";
-import SearchTerm from "@/app/dashboard/admin/_components/Search";
 
 import InputForm from "@/components/InputForm";
 import { Input } from "@/components/ui/input";
@@ -24,7 +23,7 @@ import TextArea from "@/components/ui/textarea";
 import { Mic, Upload } from "lucide-react";
 import ModalForm from "../ModalForm";
 import Filter from "@/components/filter";
-import SelectDashboard from "@/components/SelectDashboard";
+import SelectDashboard from "@/components/Selecteur";
 
 const PodcastsView = () => {
   // LOGIQUE DE FILTRAGE

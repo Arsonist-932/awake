@@ -29,7 +29,7 @@ import {
   Trash2,
   XCircle,
 } from "lucide-react";
-import SelectDashboard from "@/components/SelectDashboard";
+import SelectDashboard from "@/components/Selecteur";
 import Filter from "@/components/filter";
 
 const AppointmentsView = () => {

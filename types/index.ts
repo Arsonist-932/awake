@@ -14,15 +14,15 @@ export interface ErrorAPIProps {
   onClick: () => void;
 }
 
-/****** Search Props ******/
+/****** Search and Filter Props ******/
 export interface SearchProps {
+  name?: string;
   value: string;
   onValueChange?: (value: string) => void;
   placeholder?: string;
   children: React.ReactNode;
 }
 
-/****** Filter Props ******/
 export interface FilterProps {
   value: string;
   placeholder?: string;

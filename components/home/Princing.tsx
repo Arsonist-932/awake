@@ -1,7 +1,6 @@
 "use client";
-import { createClient } from "@/lib/supabase/client";
-import { Button } from "./ui/button";
-import { useEffect, useState } from "react";
+
+import { Button } from "../ui/button";
 
 interface PricingProps {
   title: string;

@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import UserDropdownMenu from "./UserDropdownMenu";
+import UserDropdownMenu from "./layout/UserDropdownMenu";
 
 export async function AuthButton() {
   const supabase = await createClient();

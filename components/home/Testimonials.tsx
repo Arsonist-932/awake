@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { testimonials } from "@/data/data";
-import { Card, CardTitle, CardContent } from "./ui/card";
-import StarRating from "./ui/Rating";
-import { Button } from "./ui/button";
-import { Avatar, AvatarFallback } from "./ui/avatar";
 import { cn } from "@/lib/utils";
+import { Card, CardContent, CardTitle } from "../ui/card";
+import { Avatar, AvatarFallback } from "../ui/avatar";
+import StarRating from "../ui/Rating";
+import { Button } from "../ui/button";
 
 type TestimonialsProps = {
   name: string;

@@ -4,21 +4,11 @@ export interface FetchSkillsParams {
   setCategoriesSkills: (categories: CategorySkill[]) => void;
 }
 
-// Props pour la modal de skills
-export interface EditingItem {
-  type: "category" | "theme";
-  data?: {
-    categoryId?: string;
-    categoryName?: string;
-    name?: string;
-    active?: boolean;
-  };
-}
-
 // **** Props pour les compétences ****//
 export interface Category {
   id: string;
   name: string;
+  themes?: Theme[];
   active?: boolean;
 }
 

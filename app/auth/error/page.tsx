@@ -17,6 +17,7 @@ export default async function Page({
                 Sorry, something went wrong.
               </CardTitle>
             </CardHeader>
+
             <CardContent>
               {params?.error ? (
                 <p className="text-sm text-muted-foreground">
@@ -24,7 +25,7 @@ export default async function Page({
                 </p>
               ) : (
                 <p className="text-sm text-muted-foreground">
-                  An unspecified error occurred.
+                  Une erreur indéterminée s'est produite.
                 </p>
               )}
             </CardContent>

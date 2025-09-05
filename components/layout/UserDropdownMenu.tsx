@@ -9,10 +9,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogoutButton } from "./logout-button";
-import { Button } from "./ui/button";
 import Link from "next/link";
-import ThemeToggleBar from "./ThemeToggleBar";
+import ThemeToggleBar from "../ThemeToggleBar";
+import { LogoutButton } from "../logout-button";
+import { Button } from "../ui/button";
 
 export default function UserDropdownMenu({
   user,

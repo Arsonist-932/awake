@@ -1,9 +1,9 @@
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
-interface InputForm {
+interface InputFormProps {
   id: string;
-  name: string | boolean;
+  name: string;
   type: string;
   placeholder?: string;
   classname?: string;
@@ -11,6 +11,7 @@ interface InputForm {
   step?: string;
   value?: string;
   defaultValue?: string;
+  checked?: boolean;
   required?: true;
   onChange?: (
     e: React.ChangeEvent<
@@ -28,12 +29,13 @@ const InputForm = ({
   step,
   value,
   defaultValue,
+  checked,
   onChange,
-}: InputForm) => {
+}: InputFormProps) => {
   return (
     <>
       <div className="flex flex-col gap-1">
-        <Label htmlFor={id} className={`${classname}, text-sm`}>
+        <Label htmlFor={id} className={`${classname} text-sm`}>
           {name}
         </Label>
         <Input
@@ -47,6 +49,7 @@ const InputForm = ({
           defaultValue={defaultValue}
           onChange={onChange}
           autoComplete="off"
+          checked={checked}
         />
       </div>
     </>

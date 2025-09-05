@@ -14,7 +14,9 @@ const ErrorAPI = ({ error, onClick }: ErrorAPIProps) => {
 
             <h3 className="mb-2 font-medium">Erreur de chargement</h3>
 
-            <p className="mb-4 text-sm text-red-600">{error}</p>
+            <p className="mb-4 text-sm text-red-600">
+              {"Une erreur s'est produite" + error}
+            </p>
 
             <Button variant={"closed"} onClick={onClick}>
               Réessayer
